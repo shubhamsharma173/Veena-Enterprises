@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'Veena Enterprises - Solar Services | Jaipur',
     template: '%s | Veena Enterprises Solar Services'
   },
-  description: 'Leading solar panel installation, on-grid & off-grid systems, solar inverters & batteries, maintenance & AMC services in Jaipur. Government subsidy assistance available. Call 9419962911 or 8233261929.',
+  description: 'Leading solar panel installation, on-grid & off-grid systems, solar inverters & batteries, maintenance & AMC services in Jaipur. Government subsidy assistance available.',
   keywords: [
     'solar panel installation',
     'solar services',
@@ -100,15 +100,6 @@ export default function RootLayout({
               "name": "Veena Enterprises Solar Services",
               "description": "Leading solar panel installation and solar services in Jaipur",
               "url": "https://veenaenterprises.com",
-              "telephone": ["+919419962911", "+918233261929"],
-              "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "57, Govind Nagar West",
-                "addressLocality": "Jaipur",
-                "addressRegion": "Rajasthan",
-                "postalCode": "302001",
-                "addressCountry": "IN"
-              },
               "geo": {
                 "@type": "GeoCoordinates",
                 "latitude": "26.9124",

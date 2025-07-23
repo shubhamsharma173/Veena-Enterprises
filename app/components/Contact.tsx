@@ -34,7 +34,7 @@ export default function Contact() {
                     <h4 className="text-lg font-semibold mb-2">Visit Us</h4>
                     <address className="not-italic text-gray-300">
                       <div>57, Govind Nagar West,</div>
-                      <div>Amer Road, Jaipur 302001</div>
+                      <div>Amer Road, Jaipur 302002</div>
                       <div>Rajasthan, India</div>
                     </address>
                   </div>

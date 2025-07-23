@@ -80,13 +80,6 @@ yarn start
 ### Environment Variables
 Create a `.env.local` file in the root directory:
 
-```env
-NEXT_PUBLIC_SITE_URL=https://veenaenterprises.com
-NEXT_PUBLIC_PHONE_1=9419962911
-NEXT_PUBLIC_PHONE_2=8233261929
-NEXT_PUBLIC_ADDRESS=57, Govind Nagar West, Amer Road, Jaipur 302001
-```
-
 ### SEO Configuration
 - Update `app/layout.tsx` with your Google Analytics code
 - Modify meta tags in `app/layout.tsx`
@@ -157,13 +150,6 @@ verification: {
 ## 📄 License
 
 This project is licensed under the MIT License.
-
-## 📞 Support
-
-For support or questions about the website:
-- **Phone**: 9419962911, 8233261929
-- **Address**: 57, Govind Nagar West, Amer Road, Jaipur 302001
-- **Email**: info@veenaenterprises.com
 
 ## 🚀 Deployment
 

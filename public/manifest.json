@@ -1,0 +1,16 @@
+{
+  "name": "Veena Enterprises Solar Services",
+  "short_name": "Veena Solar",
+  "description": "Leading solar panel installation and solar services in Jaipur",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFD700",
+  "theme_color": "#FFD700",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+} 

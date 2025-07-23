@@ -1,13 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { Phone, Menu, X } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
     <header className="bg-brand-yellow shadow-lg sticky top-0 z-50">
+      <style>{`
+        html {
+          scroll-behavior: smooth;
+        }
+      `}</style>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
@@ -22,33 +27,25 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex space-x-8">
-            <a href="#home" className="text-brand-darkBlue hover:text-white transition-colors font-medium">
+            <a href="#home" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
               Home
             </a>
-            <a href="#services" className="text-brand-darkBlue hover:text-white transition-colors font-medium">
+            <a href="#services" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
               Services
             </a>
-            <a href="#why-choose-us" className="text-brand-darkBlue hover:text-white transition-colors font-medium">
+            <a href="#why-choose-us" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
               Why Choose Us
             </a>
-            <a href="#contact" className="text-brand-darkBlue hover:text-white transition-colors font-medium">
+            <a href="#contact" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
               Contact
             </a>
           </nav>
-
-          {/* Contact Info */}
-          <div className="hidden lg:flex items-center space-x-4">
-            <div className="flex items-center text-brand-darkBlue">
-              <Phone className="w-4 h-4 mr-2" />
-              <span className="font-semibold">9419962911</span>
-            </div>
-          </div>
 
           {/* Mobile/Tablet menu button */}
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-brand-darkBlue hover:text-white transition-colors"
+              className="text-brand-darkBlue hover:text-brand-green transition-colors"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -59,22 +56,18 @@ export default function Header() {
         {isMenuOpen && (
           <div className="lg:hidden py-4 border-t border-brand-darkBlue">
             <nav className="flex flex-col space-y-4">
-              <a href="#home" className="text-brand-darkBlue hover:text-white transition-colors font-medium">
+              <a href="#home" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
                 Home
               </a>
-              <a href="#services" className="text-brand-darkBlue hover:text-white transition-colors font-medium">
+              <a href="#services" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
                 Services
               </a>
-              <a href="#why-choose-us" className="text-brand-darkBlue hover:text-white transition-colors font-medium">
+              <a href="#why-choose-us" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
                 Why Choose Us
               </a>
-              <a href="#contact" className="text-brand-darkBlue hover:text-white transition-colors font-medium">
+              <a href="#contact" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
                 Contact
               </a>
-              <div className="flex items-center text-brand-darkBlue pt-2">
-                <Phone className="w-4 h-4 mr-2" />
-                <span className="font-semibold">9419962911</span>
-              </div>
             </nav>
           </div>
         )}

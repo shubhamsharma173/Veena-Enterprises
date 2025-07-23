@@ -68,26 +68,7 @@ export default function Services() {
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <div className="bg-brand-darkBlue text-white rounded-lg p-8 max-w-4xl mx-auto">
-            <h3 className="text-2xl font-bold mb-4">
-              Customized Solar Power Solutions
-            </h3>
-            <p className="text-lg mb-6">
-              Every property is unique. We provide customized solar solutions tailored to your specific needs, 
-              energy consumption patterns, and budget requirements.
-            </p>
-            <a
-              href="tel:+919419962911"
-              className="bg-brand-yellow text-brand-darkBlue px-8 py-3 rounded-lg font-semibold hover:bg-yellow-400 transition-colors inline-flex items-center"
-            >
-              Get Free Consultation
-              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-            </a>
-          </div>
-        </div>
+        {/* Removed call to action with phone number */}
       </div>
     </section>
   )

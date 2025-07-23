@@ -23,31 +23,7 @@ export default function Contact() {
               </h3>
               
               <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 bg-brand-yellow rounded-lg flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-brand-darkBlue" />
-                    </div>
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold mb-2">Call Us</h4>
-                    <div className="space-y-2">
-                      <a 
-                        href="tel:+919419962911" 
-                        className="block text-lg font-bold hover:text-brand-yellow transition-colors"
-                      >
-                        9419962911
-                      </a>
-                      <a 
-                        href="tel:+918233261929" 
-                        className="block text-lg font-bold hover:text-brand-yellow transition-colors"
-                      >
-                        8233261929
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
+                {/* Only keep phone in the form, not here */}
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
                     <div className="w-12 h-12 bg-brand-yellow rounded-lg flex items-center justify-center">
@@ -167,24 +143,7 @@ export default function Contact() {
         </div>
 
         {/* Call to Action */}
-        <div className="mt-16 text-center">
-          <div className="bg-brand-yellow text-brand-darkBlue rounded-lg p-8 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold mb-4">
-              Ready to Start Your Solar Journey?
-            </h3>
-            <p className="text-xl mb-6">
-              Join hundreds of satisfied customers who have already switched to solar energy. 
-              Get your free consultation today!
-            </p>
-            <a
-              href="tel:+919419962911"
-              className="bg-brand-darkBlue text-white px-8 py-4 rounded-lg font-semibold hover:bg-blue-800 transition-colors inline-flex items-center text-lg"
-            >
-              <Phone className="w-6 h-6 mr-2" />
-              Call Now: 9419962911
-            </a>
-          </div>
-        </div>
+        {/* Removed call to action with phone number */}
       </div>
     </section>
   )

@@ -19,20 +19,6 @@ export default function Footer() {
               Leading solar panel installation and solar services in Jaipur. 
               We help you go green while saving money on your electricity bills.
             </p>
-            <div className="flex space-x-4">
-              <a
-                href="tel:+919419962911"
-                className="bg-brand-yellow text-brand-darkBlue p-3 rounded-full hover:bg-yellow-400 transition-colors"
-              >
-                <Phone className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:info@veenaenterprises.com"
-                className="bg-brand-yellow text-brand-darkBlue p-3 rounded-full hover:bg-yellow-400 transition-colors"
-              >
-                <Mail className="w-5 h-5" />
-              </a>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -93,13 +79,6 @@ export default function Footer() {
         {/* Contact Info */}
         <div className="mt-12 pt-8 border-t border-gray-700">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="flex items-center">
-              <Phone className="w-5 h-5 text-brand-yellow mr-3" />
-              <div>
-                <div className="font-semibold">Call Us</div>
-                <div className="text-gray-300">9419962911 • 8233261929</div>
-              </div>
-            </div>
             <div className="flex items-center">
               <MapPin className="w-5 h-5 text-brand-yellow mr-3" />
               <div>

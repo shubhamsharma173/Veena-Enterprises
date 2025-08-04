@@ -7,36 +7,36 @@ export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-brand-yellow shadow-lg sticky top-0 z-50">
+    <header className="absolute top-0 left-0 w-full z-50">
       <style>{`
         html {
           scroll-behavior: smooth;
         }
       `}</style>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+      <div className="mx-auto px-4 sm:px-[6rem] lg:px-[10rem]">
+        <div className="flex justify-between items-center py-6 sm:py-8">
           {/* Logo */}
-          <div className="flex items-center">
-            <div className="text-brand-darkBlue font-bold text-2xl">
+          <div className="flex flex-col items-start">
+            <div className="text-figma-text-white font-bold text-xl sm:text-2xl leading-tight drop-shadow-figma-text-lg">
               VEENA ENTERPRISES
             </div>
-            <div className="ml-2 text-brand-darkBlue text-sm font-semibold">
+            <div className="text-figma-text-white text-xs font-semibold tracking-widest mt-1 drop-shadow-figma-text">
               SOLAR SERVICES
             </div>
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden lg:flex space-x-8">
-            <a href="#home" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
+          <nav className="hidden lg:flex space-x-8 xl:space-x-10">
+            <a href="#home" className="text-figma-text-white hover:text-figma-yellow-700 transition-colors font-medium text-sm xl:text-base drop-shadow-figma-text">
               Home
             </a>
-            <a href="#services" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
+            <a href="#services" className="text-figma-text-white hover:text-figma-yellow-700 transition-colors font-medium text-sm xl:text-base drop-shadow-figma-text">
               Services
             </a>
-            <a href="#why-choose-us" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
+            <a href="#why-choose-us" className="text-figma-text-white hover:text-figma-yellow-700 transition-colors font-medium text-sm xl:text-base drop-shadow-figma-text">
               Why Choose Us
             </a>
-            <a href="#contact" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
+            <a href="#contact" className="text-figma-text-white hover:text-figma-yellow-700 transition-colors font-medium text-sm xl:text-base drop-shadow-figma-text">
               Contact
             </a>
           </nav>
@@ -45,7 +45,8 @@ export default function Header() {
           <div className="lg:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-brand-darkBlue hover:text-brand-green transition-colors"
+              className="text-figma-text-white hover:text-figma-yellow-700 transition-colors p-2 drop-shadow-figma-text"
+              aria-label="Toggle menu"
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
@@ -54,18 +55,34 @@ export default function Header() {
 
         {/* Mobile/Tablet Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-brand-darkBlue">
+          <div className="lg:hidden py-4 border-t border-figma-text-white/20 bg-figma-bg-dark/90 backdrop-blur-sm rounded-b-xl shadow-figma-xl">
             <nav className="flex flex-col space-y-4">
-              <a href="#home" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
+              <a
+                href="#home"
+                className="text-figma-text-white hover:text-figma-yellow-700 transition-colors font-medium px-4 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Home
               </a>
-              <a href="#services" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
+              <a
+                href="#services"
+                className="text-figma-text-white hover:text-figma-yellow-700 transition-colors font-medium px-4 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Services
               </a>
-              <a href="#why-choose-us" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
+              <a
+                href="#why-choose-us"
+                className="text-figma-text-white hover:text-figma-yellow-700 transition-colors font-medium px-4 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Why Choose Us
               </a>
-              <a href="#contact" className="text-brand-darkBlue hover:text-brand-green transition-colors font-medium">
+              <a
+                href="#contact"
+                className="text-figma-text-white hover:text-figma-yellow-700 transition-colors font-medium px-4 py-2"
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Contact
               </a>
             </nav>

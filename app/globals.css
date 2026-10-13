@@ -692,6 +692,33 @@ a:hover {
   color: var(--blue);
   text-decoration: underline;
 }
+.policy-actions {
+  position: sticky;
+  top: 16px;
+  z-index: 5;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 24px;
+  pointer-events: none;
+}
+.policy .policy-close {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #c8d7e6;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgb(23 77 119 / 10%);
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  pointer-events: auto;
+}
+.policy .policy-close:hover {
+  background: #edf4fb;
+}
 @media (min-width: 1600px) {
   .feature-carousel {
     margin-right: -100px;

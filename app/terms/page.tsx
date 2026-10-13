@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import PolicyClose from "../components/PolicyClose";
 import { business } from "@/lib/business";
 export const metadata: Metadata = {
   title: "Terms of Service",
@@ -11,6 +12,7 @@ export default function Terms() {
     <>
       <Header solid />
       <main id="main" className="container policy">
+        <PolicyClose title="Terms of Service" />
         <h1>Terms of Service</h1>
         <p>Last updated: 12 October 2026</p>
         <h2>Website inquiries</h2>

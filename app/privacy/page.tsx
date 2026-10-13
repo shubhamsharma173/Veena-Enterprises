@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import PolicyClose from "../components/PolicyClose";
 import { business } from "@/lib/business";
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -11,6 +12,7 @@ export default function Privacy() {
     <>
       <Header solid />
       <main id="main" className="container policy">
+        <PolicyClose title="Privacy Policy" />
         <h1>Privacy Policy</h1>
         <p>Last updated: 13 October 2026</p>
         <p>

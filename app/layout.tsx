@@ -1,158 +1,87 @@
-import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-import './globals.css'
-import Favicon from './components/Favicon'
-
-const inter = Inter({ subsets: ['latin'] })
-
+import type { Metadata, Viewport } from "next";
+import { business } from "@/lib/business";
+import "./globals.css";
+const title = "Veena Enterprises — Solar Installation & Services in Jaipur";
+const description =
+  "Solar panel installation, on-grid and off-grid systems, inverters, batteries and maintenance in Jaipur. Talk to Veena Enterprises about your solar project.";
 export const metadata: Metadata = {
-  title: {
-    default: 'Veena Enterprises - Solar Services | Jaipur',
-    template: '%s | Veena Enterprises Solar Services'
-  },
-  description: 'Leading solar panel installation, on-grid & off-grid systems, solar inverters & batteries, maintenance & AMC services in Jaipur. Government subsidy assistance available.',
-  keywords: [
-    'solar panel installation',
-    'solar services',
-    'solar panels Jaipur',
-    'on-grid solar system',
-    'off-grid solar system',
-    'solar inverters',
-    'solar batteries',
-    'solar maintenance',
-    'AMC services',
-    'government solar subsidy',
-    'solar power solutions',
-    'renewable energy',
-    'green energy',
-    'solar company Jaipur'
-  ],
-  authors: [{ name: 'Veena Enterprises' }],
-  creator: 'Veena Enterprises',
-  publisher: 'Veena Enterprises',
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL('https://veenaenterprises.com'),
-  alternates: {
-    canonical: '/',
-  },
+  metadataBase: new URL(business.url),
+  title: { default: title, template: "%s | Veena Enterprises" },
+  description,
+  alternates: { canonical: "/" },
   openGraph: {
-    title: 'Veena Enterprises - Solar Services | Jaipur',
-    description: 'Leading solar panel installation, on-grid & off-grid systems, solar inverters & batteries, maintenance & AMC services in Jaipur. Government subsidy assistance available.',
-    url: 'https://veenaenterprises.com',
-    siteName: 'Veena Enterprises Solar Services',
+    title,
+    description,
+    url: "/",
+    siteName: business.name,
+    locale: "en_IN",
+    type: "website",
     images: [
       {
-        url: '/og-image.jpg',
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: 'Veena Enterprises Solar Services',
+        alt: "Veena Enterprises — Go solar, save money, save the planet",
       },
     ],
-    locale: 'en_IN',
-    type: 'website',
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Veena Enterprises - Solar Services | Jaipur',
-    description: 'Leading solar panel installation, on-grid & off-grid systems, solar inverters & batteries, maintenance & AMC services in Jaipur.',
-    images: ['/og-image.jpg'],
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["/og-image.jpg"],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico" },
+    ],
+    apple: "/icon-180.png",
   },
-  verification: {
-    google: 'your-google-verification-code',
-  },
-}
-
+  manifest: "/manifest.json",
+};
+export const viewport: Viewport = { themeColor: "#2968aa" };
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: business.name,
+    url: business.url,
+    image: `${business.url}/og-image.jpg`,
+    telephone: business.phone,
+    email: business.email,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "57, Govind Nagar West, Amer Road",
+      addressLocality: "Jaipur",
+      addressRegion: "Rajasthan",
+      addressCountry: "IN",
+    },
+    areaServed: { "@type": "City", name: "Jaipur" },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    ],
+  };
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="alternate icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.svg" />
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#FFD700" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <html lang="en">
+      <body>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LocalBusiness",
-              "name": "Veena Enterprises Solar Services",
-              "description": "Leading solar panel installation and solar services in Jaipur",
-              "url": "https://veenaenterprises.com",
-              "geo": {
-                "@type": "GeoCoordinates",
-                "latitude": "26.9124",
-                "longitude": "75.7873"
-              },
-              "openingHours": "Mo-Su 09:00-18:00",
-              "priceRange": "₹₹",
-              "serviceArea": {
-                "@type": "City",
-                "name": "Jaipur"
-              },
-              "hasOfferCatalog": {
-                "@type": "OfferCatalog",
-                "name": "Solar Services",
-                "itemListElement": [
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Solar Panel Installation"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "On-Grid & Off-Grid Systems"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Solar Inverters & Batteries"
-                    }
-                  },
-                  {
-                    "@type": "Offer",
-                    "itemOffered": {
-                      "@type": "Service",
-                      "name": "Maintenance & AMC Services"
-                    }
-                  }
-                ]
-              }
-            })
+            __html: JSON.stringify(schema).replace(/</g, "\\u003c"),
           }}
         />
-      </head>
-      <body className={inter.className} suppressHydrationWarning>
-        <Favicon />
         {children}
       </body>
     </html>
-  )
-} 
+  );
+}

@@ -1,0 +1,4 @@
+# Copy to .dev.vars for LOCAL development only. Never set LOCAL_DEV on Cloudflare.
+LOCAL_DEV="true"
+RATE_LIMIT_SECRET="local-development-only"
+# Without email credentials leads are still saved; notification_status is unconfigured.

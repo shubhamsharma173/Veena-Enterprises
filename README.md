@@ -1,168 +1,51 @@
-# Veena Enterprises Solar Services Website
+# Veena Enterprises Solar Services
 
-A modern, SEO-optimized website for Veena Enterprises Solar Services built with Next.js 14, TypeScript, and Tailwind CSS.
+Next.js 16 static website, Cloudflare Pages Functions and D1 inquiry storage. The layout follows the supplied design reference and adapts to phones and tablets.
 
-## 🚀 Features
+Business contact: **+91 82332 61929** · **info@veenasolar.com**.
+Hours: **Monday–Friday, 9am–6pm IST**.
 
-- **SEO Optimized**: Complete meta tags, structured data, sitemap, and robots.txt
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Fast Performance**: Built with Next.js 14 for optimal loading speeds
-- **Modern UI**: Clean, professional design matching the brand colors
-- **Contact Integration**: Phone number links and contact forms
-- **PWA Ready**: Web app manifest for mobile installation
+## Run locally
 
-## 🛠️ Tech Stack
+Use Node.js 24 or newer.
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Icons**: Lucide React
-- **Fonts**: Inter (Google Fonts)
-
-## 📱 Pages & Sections
-
-1. **Hero Section**: Compelling headline with call-to-action
-2. **Services**: Solar panel installation, on-grid/off-grid systems, inverters & batteries, maintenance
-3. **Why Choose Us**: Government subsidy assistance, quality panels, cost-effective solutions
-4. **Contact**: Phone numbers, address, contact form
-5. **Footer**: Company information and quick links
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd veena-enterprises-solar
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
-
-3. **Run the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## 📦 Build & Deploy
-
-### Build for Production
-```bash
+```powershell
+npm ci
+Copy-Item .dev.vars.example .dev.vars
+npm run db:local
 npm run build
-# or
-yarn build
-```
-
-### Start Production Server
-```bash
 npm start
-# or
-yarn start
 ```
 
-## 🔧 Configuration
+Open http://127.0.0.1:3000. This runs the exported site and its real Pages Function against **local** D1. The loopback-only development setting skips Turnstile, and no email is sent without credentials. Local data stays in the ignored `.wrangler` directory. Never put `LOCAL_DEV` in a cloud environment.
 
-### Environment Variables
-Create a `.env.local` file in the root directory:
+`npm run dev` gives a faster frontend-only Next preview. Its contact API is not available; use the full preview above to test submissions.
 
-### SEO Configuration
-- Update `app/layout.tsx` with your Google Analytics code
-- Modify meta tags in `app/layout.tsx`
-- Update structured data with your business information
+## Checks
 
-## 📊 SEO Features
-
-- **Meta Tags**: Complete Open Graph and Twitter Card support
-- **Structured Data**: LocalBusiness schema markup
-- **Sitemap**: Automatic sitemap generation
-- **Robots.txt**: Search engine crawling instructions
-- **Performance**: Optimized images and fonts
-- **Accessibility**: Semantic HTML and ARIA labels
-
-## 🎨 Customization
-
-### Colors
-Update brand colors in `tailwind.config.js`:
-
-```javascript
-colors: {
-  brand: {
-    yellow: '#FFD700',
-    darkBlue: '#1E3A8A',
-    cream: '#F5F5DC',
-    green: '#10B981',
-  }
-}
+```powershell
+npm run lint
+npm run typecheck
+npm test
+npm run build
+npm audit
 ```
 
-### Content
-- Update business information in components
-- Modify services and features
-- Change contact details and address
+Tests use SQLite and mocked network calls; they do not contact customers or email providers.
 
-## 📱 Mobile Optimization
+## Project map
 
-- Responsive design for all screen sizes
-- Touch-friendly navigation
-- Optimized images and fonts
-- Fast loading on mobile networks
+- `app/components/`: sections, responsive images, menu, carousel and inquiry form.
+- `app/globals.css`: shared layout, responsive breakpoints and reduced-motion styles.
+- `lib/business.ts`: business identity and canonical domain.
+- `lib/contact-handler.mjs`: validated inquiry endpoint and notification handling.
+- `functions/api/contact.ts`: Cloudflare Pages route.
+- `migrations/`: D1 schema, indexes and lead workflow status.
+- `scripts/build-assets.mjs`: responsive WebP photos, icons and social preview.
+- `wrangler.jsonc`: Pages configuration; replace the local placeholder database ID before deployment.
 
-## 🔍 Performance Optimization
+## Launch and operation
 
-- Next.js Image optimization
-- Font optimization with `@next/font`
-- Code splitting and lazy loading
-- Minified CSS and JavaScript
+Read [deployment and email setup](docs/DEPLOYMENT.md), [lead management](docs/LEAD-OPERATIONS.md), [business improvements](docs/BUSINESS-IMPROVEMENTS.md) and [audit resolution](docs/AUDIT-RESOLUTION.md).
 
-## 📈 Analytics & Tracking
-
-Add Google Analytics by updating the verification code in `app/layout.tsx`:
-
-```javascript
-verification: {
-  google: 'your-google-verification-code',
-},
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Configure environment variables
-3. Deploy automatically on push
-
-### Other Platforms
-- Netlify
-- AWS Amplify
-- DigitalOcean App Platform
-
----
-
-**Built with ❤️ for Veena Enterprises Solar Services** 
+The implementation is local. No GitHub push, Cloudflare deployment, DNS change, mailbox purchase or live email test has been performed. The owner confirmed **veenasolar.com** and selected **Google Workspace (Gmail)** on 13 October 2026. Start with the [guided setup checklist](docs/SETUP-CHECKLIST.md). Customer figures and the supplied Jaipur address need owner verification before launch.

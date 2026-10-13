@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "veena-solar",
+  "compatibility_date": "2026-10-01",
+  "pages_build_output_dir": "./out",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "veena-leads",
+      "database_id": "282431fe-335c-4c70-b5b0-e9d8d4ecd831",
+      "migrations_dir": "migrations",
+    },
+  ],
+  "vars": {
+    "ALLOWED_ORIGINS": "https://veenasolar.com,https://www.veenasolar.com",
+    "LEAD_NOTIFY_EMAIL": "info@veenasolar.com",
+    "LEAD_FROM_EMAIL": "Veena Solar <leads@notify.veenasolar.com>",
+  },
+}

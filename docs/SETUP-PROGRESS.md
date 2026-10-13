@@ -21,16 +21,18 @@ Updated 13 October 2026.
 - **TURNSTILE_SECRET_KEY** and **RATE_LIMIT_SECRET** are saved as encrypted production secrets. Deployment **34668980-47e8-4e06-8e14-6f5d693534b1**, commit **fce9750**, succeeded after those settings were saved.
 - Preview configuration explicitly has no D1 binding and no allowed form origins.
 - Live smoke checks passed: 12 public routes, 23 linked assets, correct contact details, security headers, the 404 page, and GET `/api/contact` returning 405.
-- The live form displays the real Turnstile verification widget. A labelled launch test is prepared; completing its verification requires the owner's confirmation.
+- The owner approved the live verification and form submission. Test **b8c8d1cb** was accepted by the website and independently confirmed in production D1 on 13 October 2026 at 21:46 IST. Its lead status is `new`; notification status is `unconfigured` because the Resend key has not yet been added.
+- The owner created the Resend account and approved DNS authentication and a restricted sending key. Resend has verified `notify.veenasolar.com` in the Tokyo region. Added its TXT DKIM record and the DNS-only CNAME records `rsend.notify` and `send.notify`, preserving Cloudflare's incoming-mail records.
+- Created **Veena Solar production inquiries**, a sending-only Resend API key restricted to `notify.veenasolar.com`, and saved it as the encrypted production secret **RESEND_API_KEY** in Pages. The key is outside Git.
 - A Cloudflare redirect rule sends both HTTP and HTTPS `www.veenasolar.com` requests to `https://veenasolar.com` with status 308, preserving paths and query strings. Both variants were tested. HTTP apex also redirects to HTTPS.
 
 ## Pending
 
 - Live inbox receipt test for the configured email forwarding.
-- Owner completion of the free Resend signup. Then verify `notify.veenasolar.com`, configure a sending-only API key, save `RESEND_API_KEY` as an encrypted Pages production secret, and redeploy.
-- A production inquiry test confirming both D1 storage and inbox delivery. No production test submission or delivery has been claimed as complete.
+- Deploy after the new Resend secret so the production function uses it.
+- Repeat the labelled production form test after notification setup and confirm inbox delivery. Production form submission and D1 storage have passed; notification delivery has not yet been tested.
 
-The static website is deployed at **https://veenasolar.com**. Form notification delivery and email forwarding still need their final live tests. Google Workspace signup has been cancelled as a setup plan; no paid subscription was purchased by the agent. Email forwarding is incoming-only; Gmail replies use the Gmail address. The Cloudflare CLI currently has D1 access but lacks Pages deployment permission; hosting uses the owner's approved GitHub integration.
+The website is deployed at **https://veenasolar.com** and the form saves inquiries in D1. Form notification delivery and email forwarding still need their final live tests. Google Workspace signup has been cancelled as a setup plan; no paid subscription was purchased by the agent. Email forwarding is incoming-only; Gmail replies use the Gmail address. The latest CLI D1 read returned an authorization error; database verification succeeded through the Cloudflare dashboard instead. Hosting uses the owner's approved GitHub integration.
 
 ## DNS snapshot before migration
 

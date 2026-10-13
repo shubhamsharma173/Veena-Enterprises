@@ -11,7 +11,7 @@ Updated 13 October 2026. Cloudflare setup is in progress and the first productio
 5. In GoDaddy, open **Domain Portfolio → veenasolar.com → DNS → Nameservers → Change nameservers**. Choose your own nameservers and replace the GoDaddy pair with Cloudflare's assigned pair.
 6. Complete GoDaddy's save/verification steps. Return to Cloudflare and check for **Active** status. If DNSSEC is already enabled, follow Cloudflare's migration instructions before changing delegation.
 
-Read-only DNS check on 13 October showed `ns13.domaincontrol.com` and `ns14.domaincontrol.com`, with no published MX or root TXT answers. This snapshot is not a substitute for reviewing the dashboard immediately before changes.
+Before migration, a read-only DNS check on 13 October showed `ns13.domaincontrol.com` and `ns14.domaincontrol.com`, with no published MX or root TXT answers. The active nameservers are now `gabriel.ns.cloudflare.com` and `sneh.ns.cloudflare.com`; Cloudflare Email Routing records are installed. Review current DNS before making further changes.
 
 GoDaddy continues to handle domain ownership and renewal. Cloudflare becomes the DNS provider. [Cloudflare setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) · [GoDaddy nameserver instructions](https://www.godaddy.com/help/change-my-domain-nameservers-664).
 
@@ -28,7 +28,7 @@ Checkpoint: **Mail addressed to info@veenasolar.com arrives in the selected Gmai
 1. In Cloudflare, create a D1 database named **veena-leads**. Copy its database ID. That ID is a public configuration identifier, not an API secret.
 2. Replace the all-zero ID in `wrangler.jsonc`. Apply `migrations/0001_leads.sql` through authenticated Wrangler using `npx wrangler d1 migrations apply veena-leads --remote` after confirming the target account.
 3. Create a managed Turnstile widget for **veenasolar.com** and **www.veenasolar.com**. Keep its secret private; the site key is public. [Widget instructions](https://developers.cloudflare.com/turnstile/get-started/widget-management/dashboard/).
-4. Create the Resend account, verify **notify.veenasolar.com** and add its exact DNS records without replacing Google's root MX. Create a restricted sending API key.
+4. Create the Resend account, verify **notify.veenasolar.com** and add its exact DNS records while preserving Cloudflare Email Routing's root MX records. Create a sending-only API key restricted to the notification subdomain.
 5. Update the local production configuration and run the checks. Commit and push the reviewed changes to GitHub. The fixes are currently on **codex/website-fixes-cloudflare**; the remote version2 branch does not contain them yet.
 6. Create **Workers & Pages → Create application → Pages → Connect to Git**. Authorize only the needed GitHub repository and select **shubhamsharma173/Veena-Enterprises**. [Cloudflare Git integration](https://developers.cloudflare.com/pages/get-started/git-integration/).
 
@@ -53,9 +53,9 @@ Checkpoint: **Pages build succeeds; D1 migration and runtime secrets are configu
 
 ## Stage 4 — Connect the domain and test
 
-1. In Pages **Custom domains**, add **veenasolar.com** and **www.veenasolar.com**. Let Cloudflare create the website records, replacing conflicting parking records for these names. Preserve Google mail and verification records.
+1. In Pages **Custom domains**, add **veenasolar.com** and **www.veenasolar.com**. Let Cloudflare create the website records, replacing conflicting parking records for these names. Preserve Cloudflare Email Routing and Resend authentication records.
 2. Wait for active HTTPS. Redirect www to the apex domain while preserving paths and queries.
-3. On https://veenasolar.com, complete a labelled test inquiry with Turnstile. Confirm the D1 row and the notification in the new Gmail inbox.
+3. On https://veenasolar.com, complete a labelled test inquiry with Turnstile. Confirm the D1 row and the notification forwarded to the owner's existing Gmail inbox.
 4. Test the phone/email links, mobile navigation, policy pages and an unknown URL returning 404.
 5. Restrict preview deployments and review the customer statistics, address and image rights before promoting the site.
 

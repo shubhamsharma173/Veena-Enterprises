@@ -30,9 +30,9 @@ Updated 13 October 2026.
 - Both labelled test inquiries are retained with workflow status `closed`. The earlier pre-configuration test intentionally retains notification status `unconfigured`; it is not a missed customer inquiry.
 - A Cloudflare redirect rule sends both HTTP and HTTPS `www.veenasolar.com` requests to `https://veenasolar.com` with status 308, preserving paths and query strings. Both variants were tested. HTTP apex also redirects to HTTPS.
 
-## Final owner check
+## Verification complete
 
-- Check the existing Gmail inbox and Spam for **New solar inquiry — da239078**. Provider delivery and Cloudflare forwarding are verified; inbox placement has not yet been confirmed by the owner.
+- The owner confirmed that **New solar inquiry — da239078** arrived in the Gmail **inbox**, not Spam. The full path is verified: live form → production D1 → Resend → info@veenasolar.com → shubhamsharma173@gmail.com inbox.
 
 The website is deployed at **https://veenasolar.com**. The live form saves inquiries in D1 and sends notifications through Resend and Cloudflare Email Routing to the owner's existing Gmail address. Google Workspace signup has been cancelled as a setup plan; no paid subscription was purchased by the agent. Email forwarding is incoming-only; Gmail replies use the Gmail address. The latest CLI D1 read returned an authorization error; database verification succeeded through the Cloudflare dashboard instead. Hosting uses the owner's approved GitHub integration.
 

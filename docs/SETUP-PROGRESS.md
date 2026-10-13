@@ -14,17 +14,21 @@ Updated 13 October 2026.
 - The owner connected GitHub access for **Veena-Enterprises** to Cloudflare Pages.
 - Created Pages project **veena-solar** with the fixed branch, `npm run build:production` and output `out`.
 - Created a managed Turnstile widget for apex and www. Public site key: **0x4AAAAAAFVt14cONETwIbpS**. The secret remains outside Git.
-- The owner chose **free Cloudflare Email Routing** instead of paid Google Workspace, forwarding **info@veenasolar.com** to **shubhamsharma173@gmail.com**. Forwarding setup and verification are pending.
+- The owner chose **free Cloudflare Email Routing** instead of paid Google Workspace, forwarding **info@veenasolar.com** to **shubhamsharma173@gmail.com**. Cloudflare recognises the destination as verified; routing DNS has been installed.
+- The corrected Pages build **cdc3189** succeeded (deployment **56ab99bd-640f-4122-8cb9-59da795f7244**).
+- **veenasolar.com** and **www.veenasolar.com** are active with SSL enabled.
+- The **info@veenasolar.com → shubhamsharma173@gmail.com** forwarding rule is active. Catch-all remains disabled.
+- **TURNSTILE_SECRET_KEY** and **RATE_LIMIT_SECRET** are saved as encrypted production secrets. A redeployment applies the new runtime settings.
 
 ## Pending
 
-- Cloudflare zone activation and Email Routing recipient verification, DNS and routing rule.
+- Live inbox receipt test for the configured email forwarding.
 - Notification sender and encrypted runtime secrets.
-- First Pages build failed because the Wrangler configuration overrides dashboard variables. The fix puts public build variables in `wrangler.jsonc` and pins Node 24 in `.node-version`. Rebuild still needs verification.
+- The first Pages build failure was fixed by moving public build variables into `wrangler.jsonc` and pinning Node 24 in `.node-version`. The subsequent build succeeded.
 - Preview configuration explicitly has no D1 binding and no allowed form origins.
 - Custom domains, HTTPS and a production inquiry test confirming both D1 storage and inbox delivery.
 
-The website and email forwarding are **not yet live**. Google Workspace signup has been cancelled as a setup plan; no paid subscription was purchased by the agent. Email forwarding is incoming-only; Gmail replies use the Gmail address. The Cloudflare CLI currently has D1 access but lacks Pages deployment permission; hosting uses the owner's approved GitHub integration.
+The static website is deployed at **https://veenasolar.com**. Form notification delivery and email forwarding still need their final live tests. Google Workspace signup has been cancelled as a setup plan; no paid subscription was purchased by the agent. Email forwarding is incoming-only; Gmail replies use the Gmail address. The Cloudflare CLI currently has D1 access but lacks Pages deployment permission; hosting uses the owner's approved GitHub integration.
 
 ## DNS snapshot before migration
 

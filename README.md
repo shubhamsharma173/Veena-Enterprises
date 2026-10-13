@@ -42,10 +42,10 @@ Tests use SQLite and mocked network calls; they do not contact customers or emai
 - `functions/api/contact.ts`: Cloudflare Pages route.
 - `migrations/`: D1 schema, indexes and lead workflow status.
 - `scripts/build-assets.mjs`: responsive WebP photos, icons and social preview.
-- `wrangler.jsonc`: Pages configuration; replace the local placeholder database ID before deployment.
+- `wrangler.jsonc`: Pages configuration with the real production D1 ID, public Turnstile key and isolated preview settings.
 
 ## Launch and operation
 
 Read [deployment and email setup](docs/DEPLOYMENT.md), [lead management](docs/LEAD-OPERATIONS.md), [business improvements](docs/BUSINESS-IMPROVEMENTS.md) and [audit resolution](docs/AUDIT-RESOLUTION.md).
 
-The implementation is local. No GitHub push, Cloudflare deployment, DNS change, mailbox purchase or live email test has been performed. The owner confirmed **veenasolar.com** and selected **Google Workspace (Gmail)** on 13 October 2026. Start with the [guided setup checklist](docs/SETUP-CHECKLIST.md). Customer figures and the supplied Jaipur address need owner verification before launch.
+The tested branch is pushed to GitHub and has successfully deployed to Cloudflare Pages. GoDaddy nameservers now point to Cloudflare. The owner chose free incoming mail forwarding from **info@veenasolar.com** to **shubhamsharma173@gmail.com**, replacing the original paid Workspace plan. See [current setup progress](docs/SETUP-PROGRESS.md) for activation and live test status, and [email forwarding](docs/EMAIL-FORWARDING.md) for the mailbox workflow. Customer figures and the supplied Jaipur address need owner verification before promotion.

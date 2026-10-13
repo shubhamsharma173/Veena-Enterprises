@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-const base = 'http://127.0.0.1:3000';
+const base = process.env.SMOKE_BASE_URL || 'http://127.0.0.1:3000';
 const paths = ['/', '/privacy/', '/terms/', '/robots.txt', '/sitemap.xml', '/og-image.jpg', '/favicon.ico', '/favicon.svg', '/icon-180.png', '/icon-192.png', '/icon-512.png', '/manifest.json'];
 const results = [];
 for (const path of paths) {

@@ -11,30 +11,30 @@ Updated 13 October 2026. Confirmed domain: **veenasolar.com**. The owner switche
 | Inquiry API and permanent records | Pages Function + Cloudflare D1                    | Leads survive an email outage                                  |
 | Spam protection                   | Cloudflare Turnstile + application rate limit     | Checks submissions on the server                               |
 | Automated inquiry notifications   | Resend                                            | Implemented server-side adapter with delivery status tracking  |
-| Staff mailbox                     | Google Workspace (Gmail)                          | A real inbox for receiving and replying as info@veenasolar.com |
+| Incoming business email           | Cloudflare Email Routing → existing Gmail         | Free forwarding to the owner's verified Gmail address          |
 
-Choose a Google Workspace plan after checking current India pricing, storage and user limits. No paid plan has been purchased. [Google Workspace offers business Gmail](https://workspace.google.com/products/gmail/). The [Google Workspace setup guide](GOOGLE-WORKSPACE.md) contains the exact DNS steps.
+The selected free forwarding setup is documented in [EMAIL-FORWARDING.md](EMAIL-FORWARDING.md). Replies use the Gmail address. The [Google Workspace setup guide](GOOGLE-WORKSPACE.md) remains available for a future paid upgrade that can send and receive as info@veenasolar.com; do not add Google MX records while Cloudflare handles incoming mail.
 
 Cloudflare email routing is useful for forwarding, but a forwarding address alone is not a staff mailbox. Cloudflare now also documents a sending service in beta; that is distinct from a complete hosted inbox. This implementation uses Resend for automated notifications. [Cloudflare Email Service](https://developers.cloudflare.com/email-service/).
 
 ## 1. Prepare the domain and accounts
 
 1. The domain is confirmed. Verify the business address and the existing 500+/1K+/5+ claims before launch.
-2. Create the Cloudflare, Google Workspace and Resend accounts as needed.
+2. Use the existing Cloudflare account and Gmail inbox; create the free Resend notification account as needed.
 3. Inventory existing GoDaddy DNS records. Preserve working MX, TXT, verification and other service records when moving DNS.
 4. Add the domain as a Cloudflare zone. Follow Cloudflare's DNSSEC migration instructions if DNSSEC is already enabled; an old DS record must not point at the wrong DNS provider.
 5. In GoDaddy, change the domain's nameservers to the **two assigned by Cloudflare**. Continue paying for registration at GoDaddy; manage DNS at Cloudflare after activation.
 
 The apex domain needs a Cloudflare zone for Pages. See [Pages custom domains](https://developers.cloudflare.com/pages/configuration/custom-domains/), [Cloudflare nameserver setup](https://developers.cloudflare.com/dns/zone-setups/full-setup/setup/) and [GoDaddy nameserver instructions](https://www.godaddy.com/help/change-my-domain-nameservers-664). No nameserver changes have been made.
 
-## 2. Set up the mailbox
+## 2. Set up incoming email forwarding
 
-1. Create **info@veenasolar.com** in Google Workspace using the [mailbox setup guide](GOOGLE-WORKSPACE.md).
-2. Add its domain-verification TXT record in Cloudflare DNS.
-3. Add the provider's exact MX records and priorities. Use the records shown in your own account and region.
-4. Configure the provider's SPF and DKIM records. Use one valid SPF record per hostname, combining authorized senders when needed.
-5. Configure DMARC, initially monitoring until legitimate senders pass authentication, then strengthen the policy.
-6. Test inbound email from another provider, outbound messages, and replies. Check spam folders and authentication results.
+1. Enable Cloudflare Email Routing for **veenasolar.com**.
+2. Verify **shubhamsharma173@gmail.com** as the destination.
+3. Install the exact Cloudflare MX, SPF and DKIM records shown in its setup screen.
+4. Create the **info@veenasolar.com** routing rule pointing at that verified Gmail destination.
+5. Test inbound mail from another sender and check Gmail's spam folder. Gmail replies use the Gmail address.
+6. To change the destination later, add and verify the new address first, then edit the rule. See [email forwarding](EMAIL-FORWARDING.md).
 
 Do not mix competing inbound MX providers on the same hostname. Mail-related CNAME records must be DNS-only where the provider requires it. Protect the mailbox with MFA.
 

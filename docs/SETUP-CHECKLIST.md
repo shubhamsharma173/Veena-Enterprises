@@ -1,6 +1,6 @@
 # Guided launch checklist: veenasolar.com
 
-Updated 13 October 2026. The domain is unused. A signed-in Cloudflare account is now available and setup has started; Google Workspace is still pending. See [current setup progress](SETUP-PROGRESS.md) before repeating any creation steps below.
+Updated 13 October 2026. Cloudflare setup is in progress and the first production build succeeded. The owner chose free email forwarding instead of paid Google Workspace. See [current setup progress](SETUP-PROGRESS.md) before repeating any creation steps below.
 
 ## Stage 1 — Cloudflare DNS
 
@@ -17,11 +17,11 @@ GoDaddy continues to handle domain ownership and renewal. Cloudflare becomes the
 
 Checkpoint: **Cloudflare says Active.**
 
-## Stage 2 — Google Workspace Gmail
+## Stage 2 — Free incoming email forwarding
 
-Follow [GOOGLE-WORKSPACE.md](GOOGLE-WORKSPACE.md): create info@veenasolar.com, verify the domain, add Google's MX, activate Gmail, configure SPF/DKIM/DMARC, then test receiving and replying. All DNS records now go into Cloudflare.
+Follow [EMAIL-FORWARDING.md](EMAIL-FORWARDING.md): activate Cloudflare Email Routing and route info@veenasolar.com to shubhamsharma173@gmail.com. Use the existing Gmail inbox. Google Workspace is an optional paid upgrade, not part of this launch.
 
-Checkpoint: **info@veenasolar.com can send and receive mail.**
+Checkpoint: **Mail addressed to info@veenasolar.com arrives in the selected Gmail inbox.**
 
 ## Stage 3 — Prepare Cloudflare Pages and the form
 

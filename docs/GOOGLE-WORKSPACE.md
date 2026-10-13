@@ -1,5 +1,7 @@
 # Set up info@veenasolar.com in Gmail
 
+**Optional future upgrade:** on 13 October 2026 the owner chose free Cloudflare email forwarding instead. Do not follow these Google MX steps during the current setup. See [EMAIL-FORWARDING.md](EMAIL-FORWARDING.md).
+
 Selected by the owner on 13 October 2026. The domain is new and unused. Finish the Cloudflare nameserver setup in [SETUP-CHECKLIST.md](SETUP-CHECKLIST.md) first, so all new DNS records go in one place.
 
 ## 1. Create the Workspace account

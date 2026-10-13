@@ -54,7 +54,7 @@ Phone changed throughout to **8233261929**; email to **info@veenasolar.com**. Th
 
 ## Launch dependencies and limits
 
-Production D1 has been created and migrated, and the Cloudflare DNS zone is awaiting nameserver activation. Turnstile keys, sender verification, mailbox service and Pages deployment are still pending. The application intentionally refuses unprotected production submissions. The production build gate rejects placeholder database IDs and missing/test public keys. See [current setup progress](SETUP-PROGRESS.md).
+Production D1 has been created and migrated, the production Pages build has succeeded, and veenasolar.com has active HTTPS. Turnstile is configured and its secret is stored encrypted. Free incoming mail forwarding replaces the original paid mailbox plan. Notification sender setup and end-to-end delivery tests are still pending. The application intentionally refuses unprotected production submissions. See [current setup progress](SETUP-PROGRESS.md) for the latest activation and test status.
 
 Live Turnstile interaction, email inbox delivery, custom-domain HTTPS and preview/production isolation require checks after account setup. These are activation tasks, not claims of completed live deployment.
 

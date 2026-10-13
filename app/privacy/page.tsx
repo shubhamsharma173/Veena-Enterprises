@@ -12,7 +12,7 @@ export default function Privacy() {
       <Header solid />
       <main id="main" className="container policy">
         <h1>Privacy Policy</h1>
-        <p>Last updated: 12 October 2026</p>
+        <p>Last updated: 13 October 2026</p>
         <p>
           This notice explains how Veena Enterprises uses information submitted
           through this website.
@@ -34,7 +34,8 @@ export default function Privacy() {
         <p>
           Inquiries are stored in Cloudflare D1. We use Cloudflare to host and
           protect the website, and Resend to send inquiry notifications to our
-          business mailbox. These providers may process data in other countries.
+          business email address. Cloudflare forwards that email to our Google
+          Gmail inbox for handling. These providers may process data in other countries.
           Access to inquiries is restricted to people handling our customer
           requests.
         </p>

@@ -8,7 +8,8 @@ flowchart LR
   API --> DB[(D1: permanent lead record)]
   DB --> Confirmation[Customer sees saved confirmation]
   DB --> Resend[Resend notification]
-  Resend --> Inbox[info@veenasolar.com mailbox]
+  Resend --> Routing[info@veenasolar.com Cloudflare forwarding]
+  Routing --> Inbox[Owner's Gmail inbox]
 ```
 
 D1 is the source of truth. Email is a notification, so an email outage does not erase the customer's inquiry. Failed database writes do not show a success message.
@@ -19,7 +20,7 @@ Protection includes server validation, bounded request size, a honeypot, exact-o
 
 ## Your daily workflow
 
-1. Open the notification in the **info@veenasolar.com** mailbox.
+1. Open the notification in **shubhamsharma173@gmail.com**, forwarded from **info@veenasolar.com**.
 2. Call the customer during Monday–Friday, 9am–6pm IST; record agreed follow-up.
 3. Check the authenticated **Cloudflare dashboard → D1 → veena-leads → Console** for new leads and missed notifications.
 4. Update the status: **new → contacted → quoted → won / closed**.

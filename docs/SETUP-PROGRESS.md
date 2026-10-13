@@ -7,20 +7,24 @@ Updated 13 October 2026.
 - Website fixes, contact details, policies, responsive layout and inquiry backend implemented and tested locally. See [audit resolution](AUDIT-RESOLUTION.md).
 - Added **veenasolar.com** to the existing Cloudflare account and selected the Free plan.
 - Reviewed the five scanned DNS records. Kept the parking records during setup and set `_domainconnect` to DNS-only.
-- Cloudflare assigned **gabriel.ns.cloudflare.com** and **sneh.ns.cloudflare.com**. The GoDaddy delegation has not yet been changed.
+- Cloudflare assigned **gabriel.ns.cloudflare.com** and **sneh.ns.cloudflare.com**. The owner saved these at GoDaddy; public DNS now returns both Cloudflare nameservers.
 - Created D1 **veena-leads** in APAC, ID **282431fe-335c-4c70-b5b0-e9d8d4ecd831**.
 - Applied `0001_leads.sql` remotely and connected the public database ID in `wrangler.jsonc`.
+- Pushed the tested website changes to **codex/website-fixes-cloudflare**, commit **f04d244**.
+- The owner connected GitHub access for **Veena-Enterprises** to Cloudflare Pages.
+- Created Pages project **veena-solar** with the fixed branch, `npm run build:production` and output `out`.
+- Created a managed Turnstile widget for apex and www. Public site key: **0x4AAAAAAFVt14cONETwIbpS**. The secret remains outside Git.
+- The owner chose **free Cloudflare Email Routing** instead of paid Google Workspace, forwarding **info@veenasolar.com** to **shubhamsharma173@gmail.com**. Forwarding setup and verification are pending.
 
 ## Pending
 
-- GoDaddy sign-in, DNSSEC check and nameserver update; Cloudflare zone activation.
-- Google Workspace signup, mailbox password and subscription selection for **info@veenasolar.com**.
-- Google ownership TXT, MX, SPF, DKIM and DMARC configuration and mail tests.
-- Real Turnstile widget, notification sender and runtime secrets.
-- Push the website branch, connect a Pages project, build and deploy.
+- Cloudflare zone activation and Email Routing recipient verification, DNS and routing rule.
+- Notification sender and encrypted runtime secrets.
+- First Pages build failed because the Wrangler configuration overrides dashboard variables. The fix puts public build variables in `wrangler.jsonc` and pins Node 24 in `.node-version`. Rebuild still needs verification.
+- Preview configuration explicitly has no D1 binding and no allowed form origins.
 - Custom domains, HTTPS and a production inquiry test confirming both D1 storage and inbox delivery.
 
-The website and mailbox are **not yet live**. The Cloudflare CLI currently has D1 access but lacks Pages deployment permission; use an appropriately authorized deployment connection.
+The website and email forwarding are **not yet live**. Google Workspace signup has been cancelled as a setup plan; no paid subscription was purchased by the agent. Email forwarding is incoming-only; Gmail replies use the Gmail address. The Cloudflare CLI currently has D1 access but lacks Pages deployment permission; hosting uses the owner's approved GitHub integration.
 
 ## DNS snapshot before migration
 

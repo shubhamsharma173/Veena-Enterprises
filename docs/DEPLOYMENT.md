@@ -1,6 +1,6 @@
 # Hosting and domain email plan
 
-Updated 13 October 2026. Confirmed domain: **veenasolar.com**. The owner selected **Google Workspace (Gmail)** and confirmed that the domain is unused. GoDaddy remains the registrar; renew the domain there. Begin with the [guided setup checklist](SETUP-CHECKLIST.md).
+Updated 13 October 2026. Confirmed domain: **veenasolar.com**. The owner switched from paid Google Workspace to **free Cloudflare Email Routing**, forwarding **info@veenasolar.com** to the existing Gmail inbox. GoDaddy remains the registrar. Read [current setup progress](SETUP-PROGRESS.md) before using this original deployment plan; Workspace instructions below are now an optional future upgrade.
 
 ## Recommended services
 
@@ -85,6 +85,8 @@ Create a Turnstile widget for **veenasolar.com** and **www.veenasolar.com**. Use
 | LEAD_NOTIFY_EMAIL              | Runtime variable             | info@veenasolar.com                               |
 | LEAD_FROM_EMAIL                | Runtime variable             | Veena Solar <leads@notify.veenasolar.com>         |
 | ALLOWED_ORIGINS                | Runtime variable             | https://veenasolar.com,https://www.veenasolar.com |
+
+Public variables, including `NODE_VERSION` and `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, are now defined in `wrangler.jsonc`, which takes precedence over dashboard variables. `.node-version` also pins Node 24. Keep secrets in the encrypted dashboard settings. Preview configuration has no D1 binding or allowed form origins; use separate resources before enabling preview inquiry submissions.
 
 Do **not** configure `LOCAL_DEV` in production or previews. Cloud previews require real Turnstile keys allowed for their exact hostnames, their own DB and an exact origin allowlist. Avoid broad wildcard origins.
 

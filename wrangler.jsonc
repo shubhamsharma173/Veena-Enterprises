@@ -12,8 +12,22 @@
     },
   ],
   "vars": {
+    "NODE_VERSION": "24",
+    "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAAFVt14cONETwIbpS",
     "ALLOWED_ORIGINS": "https://veenasolar.com,https://www.veenasolar.com",
     "LEAD_NOTIFY_EMAIL": "info@veenasolar.com",
     "LEAD_FROM_EMAIL": "Veena Solar <leads@notify.veenasolar.com>",
+  },
+  "env": {
+    "preview": {
+      "d1_databases": [],
+      "vars": {
+        "NODE_VERSION": "24",
+        "NEXT_PUBLIC_TURNSTILE_SITE_KEY": "0x4AAAAAAFVt14cONETwIbpS",
+        "ALLOWED_ORIGINS": "",
+        "LEAD_NOTIFY_EMAIL": "",
+        "LEAD_FROM_EMAIL": "",
+      },
+    },
   },
 }

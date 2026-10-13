@@ -24,15 +24,17 @@ Updated 13 October 2026.
 - The owner approved the live verification and form submission. Test **b8c8d1cb** was accepted by the website and independently confirmed in production D1 on 13 October 2026 at 21:46 IST. Its lead status is `new`; notification status is `unconfigured` because the Resend key has not yet been added.
 - The owner created the Resend account and approved DNS authentication and a restricted sending key. Resend has verified `notify.veenasolar.com` in the Tokyo region. Added its TXT DKIM record and the DNS-only CNAME records `rsend.notify` and `send.notify`, preserving Cloudflare's incoming-mail records.
 - Created **Veena Solar production inquiries**, a sending-only Resend API key restricted to `notify.veenasolar.com`, and saved it as the encrypted production secret **RESEND_API_KEY** in Pages. The key is outside Git.
+- Deployment **3908c5ca-57c6-4194-86ef-4054eb1ba514**, commit **9b9fab3**, succeeded after the Resend secret was saved.
+- Live delivery test **da239078** passed at **22:07 IST on 13 October 2026**: the form confirmed success, D1 saved the inquiry with notification status `sent`, and Resend reported delivery to `info@veenasolar.com` (email ID **01a13620-33f7-7af1-9f40-d005c94830e0**).
+- Cloudflare Email Routing recorded the same message as **Forwarded** at **22:07:23 IST**, with **SPF, DKIM and DMARC all passing**. The active rule forwards it to `shubhamsharma173@gmail.com`.
+- Both labelled test inquiries are retained with workflow status `closed`. The earlier pre-configuration test intentionally retains notification status `unconfigured`; it is not a missed customer inquiry.
 - A Cloudflare redirect rule sends both HTTP and HTTPS `www.veenasolar.com` requests to `https://veenasolar.com` with status 308, preserving paths and query strings. Both variants were tested. HTTP apex also redirects to HTTPS.
 
-## Pending
+## Final owner check
 
-- Live inbox receipt test for the configured email forwarding.
-- Deploy after the new Resend secret so the production function uses it.
-- Repeat the labelled production form test after notification setup and confirm inbox delivery. Production form submission and D1 storage have passed; notification delivery has not yet been tested.
+- Check the existing Gmail inbox and Spam for **New solar inquiry — da239078**. Provider delivery and Cloudflare forwarding are verified; inbox placement has not yet been confirmed by the owner.
 
-The website is deployed at **https://veenasolar.com** and the form saves inquiries in D1. Form notification delivery and email forwarding still need their final live tests. Google Workspace signup has been cancelled as a setup plan; no paid subscription was purchased by the agent. Email forwarding is incoming-only; Gmail replies use the Gmail address. The latest CLI D1 read returned an authorization error; database verification succeeded through the Cloudflare dashboard instead. Hosting uses the owner's approved GitHub integration.
+The website is deployed at **https://veenasolar.com**. The live form saves inquiries in D1 and sends notifications through Resend and Cloudflare Email Routing to the owner's existing Gmail address. Google Workspace signup has been cancelled as a setup plan; no paid subscription was purchased by the agent. Email forwarding is incoming-only; Gmail replies use the Gmail address. The latest CLI D1 read returned an authorization error; database verification succeeded through the Cloudflare dashboard instead. Hosting uses the owner's approved GitHub integration.
 
 ## DNS snapshot before migration
 
@@ -46,6 +48,6 @@ The website is deployed at **https://veenasolar.com** and the form saves inquiri
 
 Former registrar nameservers: `ns13.domaincontrol.com` and `ns14.domaincontrol.com`. Current nameservers are `gabriel.ns.cloudflare.com` and `sneh.ns.cloudflare.com`.
 
-The imported GoDaddy DMARC record should be reviewed when the notification sender is configured. Its reporting address belongs to GoDaddy. Authenticate the legitimate sender with the provider's exact DNS records and verify alignment before changing the DMARC policy.
+The imported GoDaddy DMARC policy remains unchanged. The live notification passed DMARC authentication. Its aggregate-report destination still belongs to GoDaddy; the owner can later choose a monitored reporting service or address as part of ongoing domain administration.
 
 Keep passwords and API secrets outside Git. This file contains only public configuration identifiers and DNS records.

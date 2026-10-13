@@ -50,12 +50,12 @@ Phone changed throughout to **8233261929**; email to **info@veenasolar.com**. Th
 - Browser checks covered mobile menu, Escape focus restoration, carousel boundaries, validation and policy navigation.
 - Desktop and mobile screenshots are saved in the parent workspace's audit folder.
 - Dependency audit: zero reported vulnerabilities at the time of checking.
-- Test email calls are mocked. No real customer or mailbox was contacted.
+- Automated tests mock email calls. A separate, owner-approved live test saved a labelled synthetic inquiry in production D1 and sent a notification to the business address; no real customer was contacted.
 
 ## Launch dependencies and limits
 
-Production D1 has been created and migrated, the production Pages build has succeeded, and veenasolar.com has active HTTPS. Turnstile is configured and its secret is stored encrypted. Free incoming mail forwarding replaces the original paid mailbox plan. Notification sender setup and end-to-end delivery tests are still pending. The application intentionally refuses unprotected production submissions. See [current setup progress](SETUP-PROGRESS.md) for the latest activation and test status.
+Production D1 has been created and migrated, the production Pages build has succeeded, and veenasolar.com has active HTTPS. Turnstile is configured and its secret is stored encrypted. Free incoming mail forwarding replaces the original paid mailbox plan. The Resend notification subdomain is verified and its domain-restricted sending key is stored encrypted in Pages. The live test **da239078** passed D1 storage, Resend delivery and Cloudflare forwarding, with SPF, DKIM and DMARC passing. See [current setup progress](SETUP-PROGRESS.md) for the evidence and final owner inbox check.
 
-Live Turnstile interaction, email inbox delivery, custom-domain HTTPS and preview/production isolation require checks after account setup. These are activation tasks, not claims of completed live deployment.
+Live production submission, custom-domain HTTPS and configured separation of preview D1/origins have been checked. Gmail inbox-versus-Spam placement still needs the owner's confirmation. There is no public staff dashboard or automatic email retry scheduler; use the documented authenticated D1 workflow and notification recovery procedure.
 
 The supplied customer/panel/experience figures, address and photo rights require business-owner verification. Policy content describes the proposed implementation and needs to match actual retention and provider choices at launch. See [deployment](DEPLOYMENT.md), [lead operations](LEAD-OPERATIONS.md) and [business recommendations](BUSINESS-IMPROVEMENTS.md).

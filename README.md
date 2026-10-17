@@ -1,168 +1,120 @@
-# Veena Enterprises Solar Services Website
+# Veena Enterprises — Solar Services Website
 
-A modern, SEO-optimized website for Veena Enterprises Solar Services built with Next.js 14, TypeScript, and Tailwind CSS.
+A responsive website presenting solar installation, inverter and battery,
+maintenance, and subsidy-assistance services in Jaipur. Built with Next.js
+App Router, TypeScript and Tailwind CSS, it brings the service catalogue,
+business information and enquiry interface into a single page.
 
-## 🚀 Features
+**[View the live site](https://veena-enterprises.vercel.app)** ·
+[Page composition](./app/page.tsx) ·
+[UI components](./app/components/) ·
+[Current limitations](#current-limitations)
 
-- **SEO Optimized**: Complete meta tags, structured data, sitemap, and robots.txt
-- **Responsive Design**: Mobile-first approach with Tailwind CSS
-- **Fast Performance**: Built with Next.js 14 for optimal loading speeds
-- **Modern UI**: Clean, professional design matching the brand colors
-- **Contact Integration**: Phone number links and contact forms
-- **PWA Ready**: Web app manifest for mobile installation
+**Scope:** the service sections and interactive navigation are implemented. The
+enquiry form is currently UI only and **does not deliver enquiries to the business**.
 
-## 🛠️ Tech Stack
+## Implemented features
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Icons**: Lucide React
-- **Fonts**: Inter (Google Fonts)
+- Responsive service, benefits and contact sections with a mobile navigation
+  menu and section links.
+- Reusable React components for the header, hero, services, benefits, contact
+  area and footer.
+- Policy dialogs that load text from local static files.
+- Next.js metadata configuration, LocalBusiness structured data, and generated
+  `robots.txt` and sitemap routes.
+- Tailwind brand colours, Lucide icons, Inter via `next/font`, and web-app
+  manifest/icon assets.
+- Response headers for frame protection, content-type handling and referrer
+  policy in `next.config.js`.
 
-## 📱 Pages & Sections
+## Architecture
 
-1. **Hero Section**: Compelling headline with call-to-action
-2. **Services**: Solar panel installation, on-grid/off-grid systems, inverters & batteries, maintenance
-3. **Why Choose Us**: Government subsidy assistance, quality panels, cost-effective solutions
-4. **Contact**: Phone numbers, address, contact form
-5. **Footer**: Company information and quick links
+| Location | Responsibility |
+| --- | --- |
+| [app/page.tsx](./app/page.tsx) | Composes the landing-page sections |
+| [app/components/](./app/components/) | Section UI, mobile menu and policy dialogs |
+| [app/layout.tsx](./app/layout.tsx) | Root layout, font, metadata and structured data |
+| [app/globals.css](./app/globals.css), [tailwind.config.js](./tailwind.config.js) | Shared styles and brand palette |
+| [app/robots.ts](./app/robots.ts), [app/sitemap.ts](./app/sitemap.ts) | Search-engine metadata routes |
+| [public/](./public/) | Icons, manifest and policy text |
 
-## 🚀 Getting Started
+Most sections use the App Router's default server-component model. Client
+components handle the menu, policy dialogs and favicon behavior. Content is
+stored in the repository; there is no CMS, database, authentication or enquiry
+API. This keeps the current site easy to deploy, while content changes require
+a code update and enquiry delivery still needs implementation.
 
-### Prerequisites
+## Run locally
 
-- Node.js 18+ 
-- npm or yarn
+Prerequisites: Git, Node.js and npm. The committed Next.js version is 14.0.4;
+choose a compatible, supported Node.js release. Dependencies are recorded in
+[package-lock.json](./package-lock.json).
 
-### Installation
+```sh
+git clone https://github.com/shubhamsharma173/Veena-Enterprises.git
+cd Veena-Enterprises
+npm ci
+npm run dev
+```
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd veena-enterprises-solar
-   ```
+Open [http://localhost:3000](http://localhost:3000). The current application
+does not read environment variables, so no `.env.local` is required.
+`next/font/google` fetches Inter during development/build, so font retrieval
+requires network access.
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+### Available scripts
 
-3. **Run the development server**
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the development server |
+| `npm run build` | Create a production build |
+| `npm start` | Serve an existing production build |
+| `npm run lint` | Run `next lint`; no ESLint configuration is committed, so the first run may prompt for setup |
 
-4. **Open your browser**
-   Navigate to [http://localhost:3000](http://localhost:3000)
+To preview a production build locally:
 
-## 📦 Build & Deploy
-
-### Build for Production
-```bash
+```sh
 npm run build
-# or
-yarn build
-```
-
-### Start Production Server
-```bash
 npm start
-# or
-yarn start
 ```
 
-## 🔧 Configuration
+## Verification
 
-### Environment Variables
-Create a `.env.local` file in the root directory:
+No automated tests or CI workflow are committed. The commands above describe
+the project's scripts; this README does not claim a passing build, test suite,
+accessibility audit or performance score.
 
-### SEO Configuration
-- Update `app/layout.tsx` with your Google Analytics code
-- Modify meta tags in `app/layout.tsx`
-- Update structured data with your business information
+Before deployment, verify the production build, mobile menu, section links,
+policy dialogs, keyboard navigation and narrow-screen layout. Validate metadata
+against the actual deployment domain and routes. Add a form-delivery test when
+the enquiry backend is implemented.
 
-## 📊 SEO Features
+## Current limitations
 
-- **Meta Tags**: Complete Open Graph and Twitter Card support
-- **Structured Data**: LocalBusiness schema markup
-- **Sitemap**: Automatic sitemap generation
-- **Robots.txt**: Search engine crawling instructions
-- **Performance**: Optimized images and fonts
-- **Accessibility**: Semantic HTML and ARIA labels
+- **Enquiry delivery:** the form has no submission handler or backend. Do not
+  use it to collect real enquiries until delivery, validation and feedback
+  states are implemented.
+- **Metadata:** the configuration still uses `veenaenterprises.com`, a
+  placeholder Google verification value and a missing `/og-image.jpg`. The
+  sitemap lists `/services`, `/contact` and `/about`, but no corresponding
+  page routes exist; the site currently uses home-page section links.
+- **PWA scope:** a manifest is present, but no service worker or offline
+  behavior is implemented.
+- **Maintenance:** dependency updates, repeatable lint configuration, automated
+  checks and measured accessibility/performance results remain follow-up work.
 
-## 🎨 Customization
+## Customization and deployment
 
-### Colors
-Update brand colors in `tailwind.config.js`:
+Update section content in `app/components/`, colours in `tailwind.config.js`,
+and policy text in `public/policies/`. Keep metadata, structured data, sitemap
+and robots configuration aligned with the real public domain and routes.
 
-```javascript
-colors: {
-  brand: {
-    yellow: '#FFD700',
-    darkBlue: '#1E3A8A',
-    cream: '#F5F5DC',
-    green: '#10B981',
-  }
-}
-```
+The live site is hosted on Vercel. For another deployment, import the repository
+as a Next.js project, use the committed lockfile and the `npm run build` script,
+then verify the generated site and metadata. The current code requires no
+application secrets.
 
-### Content
-- Update business information in components
-- Modify services and features
-- Change contact details and address
+## License
 
-## 📱 Mobile Optimization
-
-- Responsive design for all screen sizes
-- Touch-friendly navigation
-- Optimized images and fonts
-- Fast loading on mobile networks
-
-## 🔍 Performance Optimization
-
-- Next.js Image optimization
-- Font optimization with `@next/font`
-- Code splitting and lazy loading
-- Minified CSS and JavaScript
-
-## 📈 Analytics & Tracking
-
-Add Google Analytics by updating the verification code in `app/layout.tsx`:
-
-```javascript
-verification: {
-  google: 'your-google-verification-code',
-},
-```
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 🚀 Deployment
-
-### Vercel (Recommended)
-1. Connect your GitHub repository to Vercel
-2. Configure environment variables
-3. Deploy automatically on push
-
-### Other Platforms
-- Netlify
-- AWS Amplify
-- DigitalOcean App Platform
-
----
-
-**Built with ❤️ for Veena Enterprises Solar Services** 
+No repository license has been declared in a `LICENSE` file. This README does
+not grant a software or business-asset reuse license.
